@@ -19,27 +19,67 @@ document.addEventListener('DOMContentLoaded', () => {
             // Change button content to indicate loading
             downloadButton.innerHTML = `
                 <span class="spinner"></span>
-                <span>Download Starting...</span>
+                <span>Preparing Download...</span>
             `;
 
-            // Start the download
-            window.location.href = 'https://github.com/Cantertech/tili/releases/download/tilnet/application-3c25d5f9-09e2-471f-8989-87c959b3a5ae.apk';
+            // Start the download - fetch and create blob for better mobile support
+            const downloadUrl = 'https://github.com/Cantertech/tili/releases/download/tilnet/application-3c25d5f9-09e2-471f-8989-87c959b3a5ae.apk';
+            
+            // Update button text while fetching
+            downloadButton.innerHTML = `
+                <span class="spinner"></span>
+                <span>Downloading...</span>
+            `;
+            
+            // Fetch the file and create a blob URL for direct download
+            fetch(downloadUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Create a blob URL
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    
+                    // Create a temporary anchor element
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = 'Tilnet.apk';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    
+                    // Trigger the download
+                    link.click();
+                    
+                    // Clean up
+                    setTimeout(() => {
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(blobUrl);
+                    }, 100);
+                    
+                    // Re-enable button after download starts
+                    setTimeout(() => {
+                        isDownloading = false;
+                        downloadButton.disabled = false;
+                        downloadButton.classList.remove('is-loading');
+                        downloadButton.innerHTML = originalButtonContent;
+                    }, 2000);
+                })
+                .catch(error => {
+                    console.error('Download failed:', error);
+                    // Fallback to direct link if fetch fails
+                    window.open(downloadUrl, '_blank');
+                    
+                    // Re-enable button
+                    isDownloading = false;
+                    downloadButton.disabled = false;
+                    downloadButton.classList.remove('is-loading');
+                    downloadButton.innerHTML = originalButtonContent;
+                });
 
             console.log('Download button clicked, attempting to download APK.');
-
-            // Optional: Re-enable the button after a short delay
-            // This is useful if the download is very quick or if you
-            // want to allow retries after a perceived failure.
-            // For a direct file download via window.location.href, the user
-            // leaves the page or the download starts in the background,
-            // so re-enabling might not be strictly necessary immediately
-            // unless you have a mechanism to detect download completion.
-            setTimeout(() => {
-                isDownloading = false;
-                downloadButton.disabled = false;
-                downloadButton.classList.remove('is-loading');
-                downloadButton.innerHTML = originalButtonContent; // Restore original content
-            }, 5000); // Re-enable after 5 seconds (adjust as needed)
         });
     }
 
