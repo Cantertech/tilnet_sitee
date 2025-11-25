@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Start the download - fetch and create blob for better mobile support
-            const downloadUrl = 'https://github.com/Cantertech/tili/releases/download/tilnet/application-3c25d5f9-09e2-471f-8989-87c959b3a5ae.apk';
+            const downloadUrl = 'https://github.com/Cantertech/Tilenet/releases/download/Tilnet/application-32cf7ab8-3f14-410a-b5cb-aab90aab6bea.apk';
             
             // Update button text while fetching
             downloadButton.innerHTML = `
