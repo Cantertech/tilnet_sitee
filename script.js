@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Start the download - fetch and create blob for better mobile support
-            const downloadUrl = 'https://drive.google.com/file/d/1feyLYG7y4TR7hOqAOpcsarxgHLyBm0kw/view?usp=sharing';
+            const downloadUrl = 'https://drive.google.com/uc?export=download&id=1feyLYG7y4TR7hOqAOpcsarxgHLyBm0kw';
+
             
             // Update button text while fetching
             downloadButton.innerHTML = `
