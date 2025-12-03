@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Start the download - fetch and create blob for better mobile support
-            const downloadUrl = 'https://drive.google.com/uc?export=download&id=1feyLYG7y4TR7hOqAOpcsarxgHLyBm0kw';
+            const downloadUrl = 'https://www.dropbox.com/scl/fi/xs77g053btu7edknxfuz1/tilnet.apk?rlkey=8axi3al1x5f1n2g9tokz4s537&st=omdivfjl&dl=1';
+
 
             
             // Update button text while fetching
