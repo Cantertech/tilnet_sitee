@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Start the download - fetch and create blob for better mobile support
-            const downloadUrl = 'https://www.dropbox.com/scl/fi/xs77g053btu7edknxfuz1/tilnet.apk?rlkey=8axi3al1x5f1n2g9tokz4s537&st=omdivfjl&dl=1';
+            const downloadUrl = 'https://expo.dev/artifacts/eas/7sZhbDQYmiK3xFRvfSYAk5.apk';
 
 
             
