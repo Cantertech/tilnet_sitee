@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             // Start the download - fetch and create blob for better mobile support
-            const downloadUrl = 'https://expo.dev/artifacts/eas/nkUHdBnWEPuYg8nHHvAiA1.apk';
+            const downloadUrl = 'https://expo.dev/artifacts/eas/ixH4nvU54K7YiCipGSX9Rg.apk';
 
             
 
